@@ -13,7 +13,15 @@ export const eventsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchEventsThunk.fulfilled, (state, action) => {
-        state.events = action.payload;
+        console.log(action.payload.events)
+        const newEvents = action.payload.events;
+        const uniqueNewEvents = newEvents
+          .filter((newEvent) => {
+            return !state.events.some(
+              (existingEvent) => existingEvent.id === newEvent.id
+            );
+          });
+        state.events = [...state.events, ...uniqueNewEvents];
         state.loading = false;
       })
       .addCase(fetchEventsThunk.pending, (state) => {

@@ -1,15 +1,22 @@
-import React from 'react'
-import { StyledItem } from './EventItem.styled'
+import React from "react";
+import { StyledItem, WrapLinks } from "./EventItem.styled";
+import { NavLink } from "react-router-dom";
 
-const EventItem = ({event}) => {
+const EventItem = ({ event }) => {
   return (
     <StyledItem>
-        <p>{event.title}</p>
-        <p>{event.description}</p>
-        <span>{event.event_date}</span>
-        <span>{event.organizer}</span>
-    </StyledItem>
-  )
-}
+      <p>{event.title}</p>
 
-export default EventItem
+      <span>{event.event_date}</span>
+
+      <WrapLinks>
+        <NavLink to="participants">View</NavLink>
+        <NavLink to="register" id={event._id}>
+          Register
+        </NavLink>
+      </WrapLinks>
+    </StyledItem>
+  );
+};
+
+export default EventItem;
