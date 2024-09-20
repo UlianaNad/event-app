@@ -1,8 +1,13 @@
-import React from 'react'
+import { NavLink } from "react-router-dom"
+import { WrapNavBar } from "./NavBar.styled"
 
 const NavBar = () => {
   return (
-    <div>NavBar</div>
+    <WrapNavBar>
+      <NavLink to="/">Events</NavLink>
+      <NavLink to="register">Register</NavLink>
+      <NavLink to="participants">Participants</NavLink>
+    </WrapNavBar>
   )
 }
 
